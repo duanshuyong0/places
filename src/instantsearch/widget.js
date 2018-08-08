@@ -16,6 +16,8 @@ class AlgoliaPlacesWidget {
   }
 
   init({ helper }) {
+    const viaIPFlag = helper.getQueryParameter('aroundLatLngViaIP');
+
     helper
       .setQueryParameter('insideBoundingBox')
       .setQueryParameter(
@@ -36,6 +38,7 @@ class AlgoliaPlacesWidget {
 
       helper
         .setQueryParameter('insideBoundingBox')
+        .setQueryParameter('aroundLatLngViaIP', false)
         .setQueryParameter('aroundLatLng', this.state.position)
         .search();
     });
@@ -46,6 +49,7 @@ class AlgoliaPlacesWidget {
 
       helper
         .setQueryParameter('insideBoundingBox')
+        .setQueryParameter('aroundLatLngViaIP', viaIPFlag)
         .setQueryParameter('aroundLatLng', this.defaultPosition)
         .search();
     });
